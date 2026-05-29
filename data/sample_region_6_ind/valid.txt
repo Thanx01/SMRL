@@ -1,0 +1,3 @@
+<http://www.worldkg.org/resource/U1>*<Point_pois-Adjacent-Line_roads>*<http://www.worldkg.org/resource/U3>
+<http://www.worldkg.org/resource/U2>*<Line_roads-Adjacent-Polygon_buildings>*<http://www.worldkg.org/resource/U4>
+<http://www.worldkg.org/resource/U1>*<http://www.worldkg.org/schema/website>*website-unseen.example

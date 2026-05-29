@@ -1,0 +1,12 @@
+<http://www.worldkg.org/resource/A>*<Point_pois-Adjacent-Line_roads>*<http://www.worldkg.org/resource/B>
+<http://www.worldkg.org/resource/B>*<Line_roads-Adjacent-Polygon_buildings>*<http://www.worldkg.org/resource/C>
+<http://www.worldkg.org/resource/C>*<Polygon_buildings-Adjacent-Point_pois>*<http://www.worldkg.org/resource/D>
+<http://www.worldkg.org/resource/D>*<Point_pois-Adjacent-Line_roads>*<http://www.worldkg.org/resource/E>
+<http://www.worldkg.org/resource/E>*<Line_roads-Intersect-Line_roads>*<http://www.worldkg.org/resource/F>
+<http://www.worldkg.org/resource/F>*<Line_roads-Adjacent-Point_pois>*<http://www.worldkg.org/resource/A>
+<http://www.worldkg.org/resource/A>*<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>*<http://www.opengis.net/ont/sf#Point>
+<http://www.worldkg.org/resource/B>*<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>*<http://www.opengis.net/ont/sf#Line>
+<http://www.worldkg.org/resource/C>*<RegionId>*sample_1
+<http://www.worldkg.org/resource/D>*<http://www.worldkg.org/schema/category>*category-restaurant
+<http://www.worldkg.org/resource/E>*<http://www.w3.org/2000/01/rdf-schema#label>*Sample Road
+<http://www.worldkg.org/resource/F>*<http://www.worldkg.org/schema/lit>*lit-yes

@@ -1,0 +1,3 @@
+<http://www.worldkg.org/resource/C>*<Polygon_buildings-Adjacent-Point_pois>*<http://www.worldkg.org/resource/E>
+<http://www.worldkg.org/resource/D>*<Point_pois-Adjacent-Line_roads>*<http://www.worldkg.org/resource/F>
+<http://www.worldkg.org/resource/C>*<http://www.worldkg.org/schema/name>*sample-building
