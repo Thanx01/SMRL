@@ -5,12 +5,21 @@ import numpy as np
 import torch
 
 
+_LMDB_ENV_CACHE = {}
+
+
+def get_lmdb_env(path):
+    if path not in _LMDB_ENV_CACHE:
+        _LMDB_ENV_CACHE[path] = lmdb.open(path, readonly=True, max_dbs=5, lock=False)
+    return _LMDB_ENV_CACHE[path]
+
+
 class TrainSubgraphDataset(Dataset):
     def __init__(self, args):
         self.args = args
 
         print(args.db_path)
-        self.env = lmdb.open(args.db_path, readonly=True, max_dbs=5, lock=False)
+        self.env = get_lmdb_env(args.db_path)
         self.subgraphs_db = self.env.open_db("train_subgraphs".encode())
 
     def __len__(self):
@@ -39,14 +48,14 @@ class TrainSubgraphDataset(Dataset):
         que_neg_head_ent = [np.random.choice(np.delete(np.arange(nentity), rt2h[(r, t)]),
                                         self.args.metatrain_num_neg) for h, r, t in que_tri]
 
-        return torch.tensor(sup_tri), sup_attrs, torch.tensor(que_tri), \
-               torch.tensor(que_neg_tail_ent), torch.tensor(que_neg_head_ent)
+        return torch.tensor(sup_tri, dtype=torch.long), sup_attrs, torch.tensor(que_tri, dtype=torch.long), \
+               torch.tensor(que_neg_tail_ent, dtype=torch.long), torch.tensor(que_neg_head_ent, dtype=torch.long)
 
 
 class ValidSubgraphDataset(Dataset):
     def __init__(self, args):
         self.args = args
-        self.env = lmdb.open(args.db_path, readonly=True, max_dbs=5, lock=False)
+        self.env = get_lmdb_env(args.db_path)
         self.subgraphs_db = self.env.open_db("valid_subgraphs".encode())
 
     def __len__(self):
@@ -75,7 +84,7 @@ class ValidSubgraphDataset(Dataset):
         que_dataloader = DataLoader(que_dataset, batch_size=len(que_tri),
                                     collate_fn=KGEEvalDataset.collate_fn)
 
-        return torch.tensor(sup_tri), sup_attrs, que_dataloader
+        return torch.tensor(sup_tri, dtype=torch.long), sup_attrs, que_dataloader
 
 
 class KGETrainDataset(Dataset):
@@ -101,8 +110,8 @@ class KGETrainDataset(Dataset):
                                         self.num_neg)
 
         pos_triple = torch.LongTensor(pos_triple)
-        neg_tail_ent = torch.from_numpy(neg_tail_ent)
-        neg_head_ent = torch.from_numpy(neg_head_ent)
+        neg_tail_ent = torch.from_numpy(neg_tail_ent).long()
+        neg_head_ent = torch.from_numpy(neg_head_ent).long()
 
         return pos_triple, neg_tail_ent, neg_head_ent
 
@@ -140,8 +149,8 @@ class KGEEvalDataset(Dataset):
 
             neg_head_cand = np.random.choice(np.delete(np.arange(self.num_ent), self.rt2h[(r, t)]),
                                              self.num_cand)
-            tail_cand = torch.from_numpy(np.concatenate(([t], neg_tail_cand)))
-            head_cand = torch.from_numpy(np.concatenate(([h], neg_head_cand)))
+            tail_cand = torch.from_numpy(np.concatenate(([t], neg_tail_cand))).long()
+            head_cand = torch.from_numpy(np.concatenate(([h], neg_head_cand))).long()
 
             pos_triple = torch.LongTensor(pos_triple)
 
