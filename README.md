@@ -1,6 +1,11 @@
 # SMRL
 
-This repository contains a PyTorch/DGL implementation for **Spatial Meta-Learning-Based Representation for Unseen Geographic Entities**. The code is adapted from the MorsE inductive knowledge graph embedding pipeline and adds the attribute aggregation layer used by SMRL for geographic entity representation.
+This repository contains the official PyTorch/DGL code for the IEEE Transactions on Neural Networks and Learning Systems article **Spatial Meta-Learning-Based Representation for Unseen Geographic Entities**.
+
+Paper DOI: [10.1109/TNNLS.2026.3679789](https://doi.org/10.1109/TNNLS.2026.3679789)  
+IEEE Xplore: [Spatial Meta-Learning-Based Representation for Unseen Geographic Entities](https://ieeexplore.ieee.org/document/11477853/)
+
+The implementation provides the SMRL pipeline for spatial-aware subgraph partitioning, local relation-attribute aggregation, and meta-learning driven representation of unseen geographic entities.
 
 ![SMRL framework](./总体框架2.png)
 
@@ -118,20 +123,3 @@ If this code or the SMRL method helps your work, please cite:
 }
 ```
 
-This implementation also reuses the inductive KGE training structure of MorsE:
-
-```bibtex
-@inproceedings{MorsE,
-  author = {Chen, Mingyang and Zhang, Wen and Zhu, Yushan and Zhou, Hongting and Yuan, Zonggang and Xu, Changliang and Chen, Huajun},
-  title = {Meta-Knowledge Transfer for Inductive Knowledge Graph Embedding},
-  year = {2022},
-  publisher = {Association for Computing Machinery},
-  address = {New York, NY, USA},
-  url = {https://doi.org/10.1145/3477495.3531757},
-  booktitle = {Proceedings of the 45th International ACM SIGIR Conference on Research and Development in Information Retrieval},
-  pages = {927-937},
-  numpages = {11},
-  location = {Madrid, Spain},
-  series = {SIGIR '22}
-}
-```
