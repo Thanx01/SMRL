@@ -1,0 +1,19 @@
+README.md
+  s_64b6bb22f5226c::t_8ba9caa5e2bb80 40,89
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.7",
+  "base_commit_sha": "9d0ae42d5936c3984774e197a24f8f677b27da8f",
+  "prompts": {},
+  "sessions": {
+    "s_64b6bb22f5226c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "s_64b6bb22f5226c",
+        "model": "unknown"
+      },
+      "human_author": "xuzhouzheng <xuzhouzheng@kingsoft.com>"
+    }
+  }
+}
