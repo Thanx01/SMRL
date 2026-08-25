@@ -37,24 +37,13 @@ Shengwen Li · **Zhouzheng Xu** · Renyao Chen · Jiarui Zhu · Yaqin Ye · Shun
 | **2. Local representation** | initialize and propagate entity context from relations and attributes | `new_ent_init_model.py`, `rgcn_model.py` |
 | **3. Meta-train and adapt** | learn transferable parameters and fine-tune on unseen entities | `meta_trainer.py`, `post_trainer.py` |
 
-For an entity with incoming relation embeddings `R` and attribute embeddings `T`, the released initializer uses:
+For an entity with incoming relation embeddings `R` and attribute embeddings `T`, the initializer uses:
 
 ```text
 h = mean(R) + mean(T)
 ```
 
 Attribute facts include non-entity-object triples and semantic metadata relations such as `rdf:type`, `rdfs:label`, `RegionId`, and `worldkg.org/schema/*`. Attribute keys are indexed as `(predicate, object)` pairs.
-
-## Repository Scope
-
-| Included | Availability |
-|---|---|
-| PyTorch/DGL model, meta-training, fine-tuning, and preprocessing code | ✅ |
-| Small known/unseen graph examples for format checks | ✅ |
-| Full experimental datasets | not distributed in this repository |
-| Pretrained checkpoints and a frozen paper-results table | not distributed in this repository |
-
-The sample files verify data parsing and preprocessing; they are not a benchmark subset.
 
 ## Installation
 
@@ -97,7 +86,7 @@ Each file contains one triple per line:
 <head>*<relation>*<tail>
 ```
 
-The parser also accepts `^` as a legacy separator. See `data/sample_region_v6` and `data/sample_region_6_ind` for small format examples. The first run creates cached pickle files and LMDB subgraph databases under `data/`.
+The parser accepts both `*` and `^` separators. See `data/sample_region_v6` and `data/sample_region_6_ind` for format examples. The first run creates cached pickle files and LMDB subgraph databases under `data/`.
 
 ## Training
 
@@ -151,7 +140,3 @@ If SMRL is useful in your research, please cite:
   doi     = {10.1109/TNNLS.2026.3679789}
 }
 ```
-
-## License
-
-A repository license has not yet been published. Please contact the authors before redistributing the code or derived releases.
