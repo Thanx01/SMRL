@@ -1,0 +1,19 @@
+README.md
+  s_d3f4ebbe396c23::t_7225c29ca3286c 1-157
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.7",
+  "base_commit_sha": "3bf8a258c32a61a3119648089773d18aa860dc70",
+  "prompts": {},
+  "sessions": {
+    "s_d3f4ebbe396c23": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "s_d3f4ebbe396c23",
+        "model": "unknown"
+      },
+      "human_author": "xuzhouzheng <xuzhouzheng@kingsoft.com>"
+    }
+  }
+}
